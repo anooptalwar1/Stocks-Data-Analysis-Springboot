@@ -1,44 +1,45 @@
 package com.example.StocksDataAnalytics.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 
 @Entity
 @Table(name = "users")
-public class Users {
+public class User {
 
-    private long id;
+    private Integer id;
     private String firstName;
     private String lastName;
+
     private Boolean active;
-    private String username;
+    private String userName;
     private String password;
     private Boolean superUser;
+    private String roles;
 
-    public Users() {
+
+
+    public User() {
 
     }
 
-    public Users(String firstName, String lastName, Boolean active,
-                 String username, String password, Boolean superUser) {
+    public User(String firstName, String lastName, Boolean active,
+                 String userName, String password, Boolean superUser, String roles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.active = active;
-        this.username = username;
+        this.userName = userName;
         this.password = password;
         this.superUser = superUser;
+        this.roles = roles;
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public long getId() {
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Integer getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -67,11 +68,11 @@ public class Users {
     }
 
     @Column(name = "username", nullable = false)
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     @Column(name = "password", nullable = false)
@@ -89,4 +90,8 @@ public class Users {
     public void setSuperUser(Boolean superUser) {
         this.superUser = superUser;
     }
+
+    @Column(name = "roles", nullable = true)
+    public String getRoles() { return roles; }
+    public void setRoles(String roles) { this.roles = roles; }
 }
