@@ -11,6 +11,8 @@ CREATE TABLE IF NOT EXISTS users (
     roles TEXT NULL
 );
 
+ALTER TABLE users ALTER COLUMN active SET DEFAULT TRUE;
+
 CREATE TABLE IF NOT EXISTS stocks (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
@@ -26,7 +28,8 @@ CREATE TABLE IF NOT EXISTS stocks (
     	  ON DELETE SET NULL
 );
 
-
+ALTER TABLE stocks ALTER COLUMN is_active SET DEFAULT TRUE;
+ALTER TABLE stocks ALTER COLUMN last_update SET DEFAULT CURRENT_TIMESTAMP;
 
 -- INSERT DATA
 INSERT INTO users (id, first_name, last_name, active, username, password, super_user, roles)

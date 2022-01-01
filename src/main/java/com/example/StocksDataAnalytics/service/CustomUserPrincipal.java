@@ -15,6 +15,7 @@ public class CustomUserPrincipal implements UserDetails {
     private String password;
     private boolean active;
     private List<GrantedAuthority> authorities;
+    private String roles;
 
     public CustomUserPrincipal(User user) {
         this.id = user.getId();
@@ -24,9 +25,13 @@ public class CustomUserPrincipal implements UserDetails {
         this.authorities = Arrays.stream(user.getRoles().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
+        this.roles = user.getRoles();
     }
 
     public Integer getId() {return id;}
+
+    public String getRoles() {return roles;}
+    public void setRoles(String roles) {this.roles = roles;}
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -7,7 +7,10 @@ import com.example.StocksDataAnalytics.repository.StocksRepository;
 import com.example.StocksDataAnalytics.service.CustomUserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +18,7 @@ import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/reporting")
@@ -23,8 +27,8 @@ public class StocksController {
     private StocksRepository stocksRepository;
 
     @GetMapping("/stocks")
-    public List<Stocks> getAllStocks() {
-        return stocksRepository.findAll();
+    public Page<Stocks> getAllStocks(Pageable pageable) {
+        return stocksRepository.findAll(pageable);
     }
 
     @GetMapping("/stocks/{id}")
@@ -46,6 +50,8 @@ public class StocksController {
                                             @Valid @RequestBody Stocks stockDetails) throws ResourceNotFoundException {
         Stocks stock = stocksRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Stock not found for this id :: " + id));
+        System.out.println("user_id : " + userDetails.getId());
+        System.out.println("stock user_id : " + stock.getUserId());
         if (userDetails.getId() == stock.getUserId()) {
             stock.setName(stockDetails.getName());
             stock.setCurrentPrice(stockDetails.getCurrentPrice());
@@ -55,7 +61,7 @@ public class StocksController {
 
             final Stocks updatedStock = stocksRepository.save(stock);
             return ResponseEntity.ok(updatedStock);
-        }else if (userDetails.getAuthorities().contains("admin")) {
+        }else if (userDetails.getRoles().contains("admin")) {
             stock.setName(stockDetails.getName());
             stock.setCurrentPrice(stockDetails.getCurrentPrice());
             stock.setCurrencyId(stockDetails.getCurrencyId());
@@ -65,9 +71,7 @@ public class StocksController {
             final Stocks updatedStock = stocksRepository.save(stock);
             return ResponseEntity.ok(updatedStock);
         } else {
-            Map<String, Boolean> response = new HashMap<>();
-            response.put("deleted", Boolean.FALSE);
-            return (ResponseEntity<Stocks>) response;
+            throw new ResourceNotFoundException("Update not allowed for this stock by user :" + userDetails.getId());
         }
 
     }
@@ -79,15 +83,18 @@ public class StocksController {
                 .orElseThrow(() -> new ResourceNotFoundException("Stock not found for this id :: " + id));
         System.out.println("user_id : " + userDetails.getId());
         System.out.println("stock user_id : " + stock.getUserId());
-        System.out.println("authorities : " + userDetails.getAuthorities().contains("admin"));
-        String user = String.valueOf(userDetails.getAuthorities().stream().findFirst().get());
+        String user = userDetails.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.joining(","));
+
+
         if (userDetails.getId() == stock.getUserId()) {
             stocksRepository.delete(stock);
             Map<String, Boolean> response = new HashMap<>();
             response.put("deleted", Boolean.TRUE);
             return response;
         }
-        else if(user == "admin") {
+        else if(userDetails.getRoles().contains("admin")) {
             stocksRepository.delete(stock);
             Map<String, Boolean> response = new HashMap<>();
             response.put("deleted", Boolean.TRUE);

@@ -1,0 +1,498 @@
+{
+	"info": {
+		"_postman_id": "0f9ac27c-80bf-4b0d-8712-5470f96f50a9",
+		"name": "Pyconiq",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Stock",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY0MTA3MjMyOSwiZXhwIjoxNjQxMTU4NzI5fQ.TId3KRgG6_UhT8YlKsAoMrTl7h3NOPyOT_LF-AasZpRs83DfAm85cmPAlX8dLyOwMVKCIRmOcgwZ7-F1FUbS_w",
+						"type": "string"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"nvidia\",\r\n\"currentPrice\" : \"1300\",\r\n\"currencyId\": \"USD\",\r\n\"quantity\": \"1640\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/reporting/stocks",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reporting",
+						"stocks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Stock by ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0IiwiaWF0IjoxNjQwOTA3MjA4LCJleHAiOjE2NDA5OTM2MDh9.NJNQpvsQHPmI_MPoQs7OliKKDbhxjSuP7waUbm1jUAaLqJGjq8roMPczdw5YH70KQd4AfQ2QfGXDPXiLgCGG0A",
+						"type": "string"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/reporting/stocks/6",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reporting",
+						"stocks",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Stocks",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2aWV3ZXIiLCJpYXQiOjE2NDEwNzI0NTIsImV4cCI6MTY0MTE1ODg1Mn0.XGI3H4mXlLMAiBPwBv1_wRFqEWZvXPn4d9fN9IeIfKjF5Kzu2t52GeEGC5tGmOVJOxaT6fz1VwXaXDKQzoFUEg",
+						"type": "string"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/reporting/stocks/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reporting",
+						"stocks",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Stock",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY0MTA3ODU3MCwiZXhwIjoxNjQxMTY0OTcwfQ.9jfBcNtZF8z3elckAI1qhYRy7pWt3JQuvHNIzktBSSkB0GB7DttY4CEbaT1QPakGIzE6GTsUdsnM0U5LIW7PrQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n        \"name\": \"dell\",\r\n        \"currentPrice\": 1300.0,\r\n        \"currencyId\": \"USD\",\r\n        \"quantity\": 1840,\r\n        \"active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/reporting/stocks/6",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reporting",
+						"stocks",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"userName\": \"admin\",\r\n\"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/reporting/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reporting",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Stock",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2aWV3ZXIiLCJpYXQiOjE2NDEwNzI0NTIsImV4cCI6MTY0MTE1ODg1Mn0.XGI3H4mXlLMAiBPwBv1_wRFqEWZvXPn4d9fN9IeIfKjF5Kzu2t52GeEGC5tGmOVJOxaT6fz1VwXaXDKQzoFUEg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/reporting/stocks/15",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reporting",
+						"stocks",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/reporting/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reporting",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY0MDkwMDA2NSwiZXhwIjoxNjQwOTg2NDY1fQ.uBJzi5MJz7I-HfBZT3QtDMOqxr6Bu-vzExKeDlRYOZILtX2ZL-mD3Dv7G1Ilk_Exj0-KzhxO0osSll5A3yL9IA"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n        \"firstName\": \"test\",\r\n        \"lastName\": \"test\",\r\n        \"active\": true,\r\n        \"userName\": \"test\",\r\n        \"password\": \"test\",\r\n        \"superUser\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/reporting/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reporting",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2Mzk2ODkxMDYsImlhdCI6MTYzOTY4ODgwNn0.yxmyhxkoxEe0j4SHzzw6xziqgb43yePiDYaNKnZ1sUw",
+						"disabled": true
+					},
+					{
+						"key": "X-CSRFTOKEN",
+						"type": "text",
+						"value": "VOMETJSudUOrGw23kkxdTgf5qc2WXUhHMaJKUKFYs5Fa8i7mj7wKquGR493Ce8vy",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"firstName\": \"test\",\r\n    \"lastName\": \"test\",\r\n    \"active\": true,\r\n    \"userName\": \"test\",\r\n    \"password\": \"test\",\r\n    \"superUser\": false,\r\n    \"roles\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/reporting/users/3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reporting",
+						"users",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2Mzk2ODkxMDYsImlhdCI6MTYzOTY4ODgwNn0.yxmyhxkoxEe0j4SHzzw6xziqgb43yePiDYaNKnZ1sUw"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n        \"firstName\": \"viewer\",\r\n        \"lastName\": \"viewer\",\r\n        \"active\": true,\r\n        \"username\": \"viewer\",\r\n        \"password\": \"viewer\",\r\n        \"superUser\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/reporting/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reporting",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User by id",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2aWV3ZXIiLCJpYXQiOjE2NDA5MDM3NzIsImV4cCI6MTY0MDk5MDE3Mn0.NHqLmorUVHnpWpNU5BFIs2zvjHYTW2YcB_DCBT1WPr2qOiv0iIJyzpoIuy_bIaX3q9l6SrejYQIHrK2AQ4q_dg",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/reporting/users/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reporting",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Own User Details",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2aWV3ZXIiLCJpYXQiOjE2NDA5MDM3NzIsImV4cCI6MTY0MDk5MDE3Mn0.NHqLmorUVHnpWpNU5BFIs2zvjHYTW2YcB_DCBT1WPr2qOiv0iIJyzpoIuy_bIaX3q9l6SrejYQIHrK2AQ4q_dg"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8080/api/reporting/users/me",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reporting",
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

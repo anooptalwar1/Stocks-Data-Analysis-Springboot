@@ -1,5 +1,7 @@
 package com.example.StocksDataAnalytics.model;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import javax.print.attribute.standard.DateTimeAtCompleted;
 import javax.print.attribute.standard.DateTimeAtCreation;
@@ -68,6 +70,7 @@ public class Stocks {
         this.currencyId = currencyId;
     }
 
+    @UpdateTimestamp
     @Column(name = "last_update", nullable = true, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     public Timestamp getLastUpdate() {
         return lastUpdate;
