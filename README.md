@@ -2,10 +2,9 @@
 
 ## Local Development (FOR PC)
 
+1. Start PostgreSQL instance
 
-1.  Start PostgreSQL instance
-
-   `docker run --name portal_postgres -p 5432:5432 -e POSTGRES_HOST_AUTH_METHOD=trust -d postgres`
+`docker run --name portal_postgres -p 5432:5432 -e POSTGRES_HOST_AUTH_METHOD=trust -d postgres`
 
 2. Migration script get automatically executed using Flyway and is available in db.migrations in resources
 
@@ -19,8 +18,8 @@
     - http://localhost:8080/swagger-ui.html ---- Swagger UI
 
 5. API's can also be tested using postman collection
-   - "Pyconiq.postman_collection.json" available in root path of git repo
+    - "Pyconiq.postman_collection.json" available in root path of git repo
 
 7. Retrieve Token using API
-   - http://localhost:8080/api/reporting/auth with {"userName": "admin",
-     "password": "admin"} sent in request body as JSON.
+    - http://localhost:8080/api/reporting/auth with {"userName": "admin",
+      "password": "admin"} sent in request body as JSON.

@@ -18,13 +18,12 @@ public class User {
     private String roles;
 
 
-
     public User() {
 
     }
 
     public User(String firstName, String lastName, Boolean active,
-                 String userName, String password, Boolean superUser, String roles) {
+                String userName, String password, Boolean superUser, String roles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.active = active;
@@ -39,6 +38,7 @@ public class User {
     public Integer getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -47,6 +47,7 @@ public class User {
     public String getFirstName() {
         return firstName;
     }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -55,6 +56,7 @@ public class User {
     public String getLastName() {
         return lastName;
     }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -63,6 +65,7 @@ public class User {
     public Boolean getActive() {
         return active;
     }
+
     public void setActive(Boolean active) {
         this.active = active;
     }
@@ -71,6 +74,7 @@ public class User {
     public String getUserName() {
         return userName;
     }
+
     public void setUserName(String userName) {
         this.userName = userName;
     }
@@ -79,6 +83,7 @@ public class User {
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -87,11 +92,17 @@ public class User {
     public Boolean getSuperUser() {
         return superUser;
     }
+
     public void setSuperUser(Boolean superUser) {
         this.superUser = superUser;
     }
 
     @Column(name = "roles", nullable = true)
-    public String getRoles() { return roles; }
-    public void setRoles(String roles) { this.roles = roles; }
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
 }

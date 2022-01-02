@@ -6,7 +6,6 @@ import com.example.StocksDataAnalytics.model.Stocks;
 import com.example.StocksDataAnalytics.repository.StocksRepository;
 import com.example.StocksDataAnalytics.service.CustomUserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -43,11 +41,11 @@ public class StocksController {
     public Stocks createStock(@AuthenticationPrincipal CustomUserPrincipal userDetails, @Valid @RequestBody Stocks stocks) {
         stocks.setUserId(userDetails.getId());
         return stocksRepository.save(stocks);
-        }
+    }
 
     @PutMapping("/stocks/{id}")
     public ResponseEntity<Stocks> updateStock(@AuthenticationPrincipal CustomUserPrincipal userDetails, @PathVariable(value = "id") Integer id,
-                                            @Valid @RequestBody Stocks stockDetails) throws ResourceNotFoundException {
+                                              @Valid @RequestBody Stocks stockDetails) throws ResourceNotFoundException {
         Stocks stock = stocksRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Stock not found for this id :: " + id));
         System.out.println("user_id : " + userDetails.getId());
@@ -61,7 +59,7 @@ public class StocksController {
 
             final Stocks updatedStock = stocksRepository.save(stock);
             return ResponseEntity.ok(updatedStock);
-        }else if (userDetails.getRoles().contains("admin")) {
+        } else if (userDetails.getRoles().contains("admin")) {
             stock.setName(stockDetails.getName());
             stock.setCurrentPrice(stockDetails.getCurrentPrice());
             stock.setCurrencyId(stockDetails.getCurrencyId());
@@ -93,8 +91,7 @@ public class StocksController {
             Map<String, Boolean> response = new HashMap<>();
             response.put("deleted", Boolean.TRUE);
             return response;
-        }
-        else if(userDetails.getRoles().contains("admin")) {
+        } else if (userDetails.getRoles().contains("admin")) {
             stocksRepository.delete(stock);
             Map<String, Boolean> response = new HashMap<>();
             response.put("deleted", Boolean.TRUE);
@@ -105,8 +102,8 @@ public class StocksController {
             return response;
         }
 
-        }
     }
+}
 
 
 

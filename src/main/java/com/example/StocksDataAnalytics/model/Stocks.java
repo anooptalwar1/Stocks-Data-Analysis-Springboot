@@ -3,8 +3,6 @@ package com.example.StocksDataAnalytics.model;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import javax.print.attribute.standard.DateTimeAtCompleted;
-import javax.print.attribute.standard.DateTimeAtCreation;
 import java.sql.Timestamp;
 
 @Entity
@@ -42,6 +40,7 @@ public class Stocks {
     public Integer getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -50,6 +49,7 @@ public class Stocks {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -58,6 +58,7 @@ public class Stocks {
     public double getCurrentPrice() {
         return currentPrice;
     }
+
     public void setCurrentPrice(double currentPrice) {
         this.currentPrice = currentPrice;
     }
@@ -66,23 +67,26 @@ public class Stocks {
     public String getCurrencyId() {
         return currencyId;
     }
+
     public void setCurrencyId(String currencyId) {
         this.currencyId = currencyId;
     }
 
     @UpdateTimestamp
-    @Column(name = "last_update", nullable = true, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name = "last_update", nullable = true, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     public Timestamp getLastUpdate() {
         return lastUpdate;
     }
+
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
-    @Column(name = "is_active", nullable = true, columnDefinition="boolean default true")
+    @Column(name = "is_active", nullable = true, columnDefinition = "boolean default true")
     public Boolean getActive() {
         return isActive;
     }
+
     public void setActive(Boolean isActive) {
         isActive = isActive;
     }
@@ -91,6 +95,7 @@ public class Stocks {
     public long getQuantity() {
         return quantity;
     }
+
     public void setQuantity(long quantity) {
         this.quantity = quantity;
     }
@@ -99,6 +104,7 @@ public class Stocks {
     public Integer getUserId() {
         return userId;
     }
+
     public void setUserId(int userId) {
         this.userId = userId;
     }
