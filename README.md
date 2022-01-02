@@ -20,6 +20,20 @@
 5. API's can also be tested using postman collection
     - "Pyconiq.postman_collection.json" available in root path of git repo
 
-7. Retrieve Token using API
+6. Retrieve Token using API
     - http://localhost:8080/api/reporting/auth with {"userName": "admin",
       "password": "admin"} sent in request body as JSON.
+
+7. Maven Build jar
+   - mvn clean package
+   - cd target
+   StocksDataAnalysis.jar will be available after above command execution
+
+8. Docker builds
+   - docker build -t stocks_data_analysis .
+   
+9. Running in docker
+    - docker network create stocks
+    - docker run --name portal_postgres -p 5432:5432 -e POSTGRES_HOST_AUTH_METHOD=trust -d postgres
+    - docker network connect stocks portal_postgres
+    - docker run -it -e HOST_IP=localhost -p 8080:8080 -d stocks_data_analysis --network=stocks
