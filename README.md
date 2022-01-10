@@ -1,4 +1,4 @@
-# Stocks-Data-Analytics-Springboot
+# Stocks-Data-Analysis-Springboot
 
 ## Local Development (FOR PC)
 
